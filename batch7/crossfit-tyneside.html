@@ -189,15 +189,60 @@ footer .swap:after{content:"";position:absolute;top:2px;left:2px;width:12px;heig
  .card{border-right:0}
  .cta .btn{flex:1;text-align:center}
 }
+
+/* ===== chrome intro + membership calculator (v2) ===== */
+:root{--neon:#7CE86A}
+.bloom{position:absolute;inset:0;pointer-events:none;background:radial-gradient(58% 44% at 50% 46%,rgba(124,232,106,.15),transparent 72%),radial-gradient(38% 28% at 62% 62%,rgba(147,112,219,.13),transparent 72%);animation:bloomp 5s ease-in-out infinite}
+@keyframes bloomp{0%,100%{opacity:.65}50%{opacity:1}}
+.dust{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.dust i{position:absolute;bottom:8%;width:3px;height:3px;border-radius:50%;background:#fff;opacity:0;animation:float 9s linear infinite}
+.dust i:nth-child(1){left:14%;animation-delay:0s}
+.dust i:nth-child(2){left:27%;animation-delay:2.1s}
+.dust i:nth-child(3){left:41%;animation-delay:4.4s}
+.dust i:nth-child(4){left:55%;animation-delay:1.2s}
+.dust i:nth-child(5){left:68%;animation-delay:3.4s}
+.dust i:nth-child(6){left:79%;animation-delay:5.6s}
+.dust i:nth-child(7){left:88%;animation-delay:2.8s}
+.dust i:nth-child(8){left:34%;animation-delay:6.4s}
+@keyframes float{0%{transform:translateY(0) scale(.8);opacity:0}18%{opacity:.7}100%{transform:translateY(-240px) scale(1.1);opacity:0}}
+.cemblem{width:78px;height:78px;margin:0 auto 22px;display:grid;place-items:center}
+.cemblem svg{width:100%;height:100%;filter:drop-shadow(0 0 20px rgba(124,232,106,.28)) drop-shadow(0 0 6px rgba(255,255,255,.25))}
+h1.chrome{background:linear-gradient(180deg,#ffffff 0%,#d8dde2 28%,#767d85 47%,#f4f7fa 58%,#98a0a8 72%,#ffffff 100%);background-size:100% 230%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 7s ease-in-out infinite;filter:drop-shadow(0 10px 30px rgba(255,255,255,.10));transform:rotateX(6deg)}
+@keyframes sheen{0%,100%{background-position:0 0}50%{background-position:0 100%}}
+/* calculator */
+.calc{display:grid;grid-template-columns:1.3fr .95fr;border:1px solid var(--line);margin-top:28px;background:linear-gradient(180deg,rgba(255,255,255,.018),transparent)}
+.copt{padding:8px 24px;border-right:1px solid var(--line)}
+.crow{display:grid;grid-template-columns:104px 1fr;gap:16px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+.crow:last-child{border-bottom:0}
+.cl{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{background:transparent;border:1px solid var(--line);color:var(--ink);padding:9px 16px;border-radius:999px;font:inherit;font-size:12px;letter-spacing:.05em;cursor:pointer;transition:border-color .25s,color .25s,box-shadow .25s}
+.seg button:hover{border-color:rgba(255,255,255,.38)}
+.seg button.on{border-color:var(--neon);color:var(--neon);box-shadow:0 0 20px rgba(124,232,106,.16),inset 0 0 14px rgba(124,232,106,.07)}
+.cout{padding:28px 24px;display:flex;flex-direction:column;gap:12px}
+.cnum{display:flex;align-items:baseline;gap:10px;margin:2px 0 0}
+.cnum b{font-family:var(--serif);font-size:54px;font-weight:500;letter-spacing:-.02em;color:#fff;text-shadow:0 0 26px rgba(124,232,106,.32);transition:color .3s}
+.cnum b.tick{animation:neontick .55s ease}
+@keyframes neontick{0%{color:var(--neon);text-shadow:0 0 34px rgba(124,232,106,.6)}100%{color:#fff}}
+.cnum i{font-style:normal;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.cline{font-size:12.5px;color:var(--muted);margin:0}
+.csave{font-size:12px;letter-spacing:.04em;color:var(--neon);min-height:16px;transition:opacity .3s;margin:0}
+.cfine{font-size:11px;line-height:1.65;color:var(--muted);opacity:.75;margin:2px 0 0}
+.pill.wide{width:100%;justify-content:center;margin-top:4px}
+@media(max-width:880px){.calc{grid-template-columns:1fr}.copt{border-right:0;border-bottom:1px solid var(--line)}.crow{grid-template-columns:1fr;gap:10px}.cnum b{font-size:44px}}
 </style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 </head>
 <body class="locked">
 
 <div id="intro">
   <div class="smoke"><i></i><i></i><i></i></div>
+  <div class="bloom"></div>
+  <div class="dust" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="iin">
+    <div class="cemblem"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="url(#cg)" stroke-width="1.2" opacity=".7"/><circle cx="50" cy="50" r="34" stroke="url(#cg)" stroke-width=".8" opacity=".4"/><rect x="22" y="46" width="56" height="7" rx="3.5" fill="url(#cg)"/><rect x="18" y="38" width="9" height="23" rx="3" fill="url(#cg)"/><rect x="73" y="38" width="9" height="23" rx="3" fill="url(#cg)"/><defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#8f969d"/><stop offset=".62" stop-color="#f4f7fa"/><stop offset="1" stop-color="#6f767d"/></linearGradient></defs></svg></div>
     <p class="est">CrossFit &middot; Ouseburn, Newcastle</p>
-    <h1 class="serif">CrossFit Tyneside</h1>
+    <h1 class="chrome">CrossFit Tyneside</h1>
     <span class="p2">Newcastle &middot; Independent</span>
     <div class="iline"><b></b></div>
     <button class="ienter" id="enterBtn">Enter the floor</button>
@@ -210,6 +255,7 @@ footer .swap:after{content:"";position:absolute;top:2px;left:2px;width:12px;heig
     <nav class="mid">
       <a href="#floor" class="on">The Floor</a>
       <a href="#motion">In Motion</a>
+      <a href="#membership">Membership</a>
       <a href="#timetable">Timetable</a>
       <a href="#visit">Visit</a>
     </nav>
@@ -291,7 +337,39 @@ footer .swap:after{content:"";position:absolute;top:2px;left:2px;width:12px;heig
   </div>
 </section>
 
-<section class="block" id="timetable">
+<section id="membership" class="block">
+  <div class="bh rv">
+    <p class="k">03 &mdash; Membership</p>
+    <h2>Build your <em>month.</em></h2>
+    <p class="bhl">Pick your hours, your commitment and your coaching. The number moves with you &mdash; before you ever walk in.</p>
+  </div>
+  <div class="calc rv">
+    <div class="copt">
+      <div class="crow">
+        <p class="cl">Term</p>
+        <div class="seg" data-group="term"><button class="on" data-v="flex">Flexible monthly</button><button data-v="annual">Annual pass</button></div>
+      </div>
+      <div class="crow">
+        <p class="cl">Hours</p>
+        <div class="seg" data-group="hours"><button class="on" data-v="peak">Peak</button><button data-v="off">Off-peak &mdash; save 15%</button></div>
+      </div>
+      <div class="crow">
+        <p class="cl">Coaching</p>
+        <div class="seg" data-group="pt"><button class="on" data-v="0">No PT</button><button data-v="4">4 PT / month</button><button data-v="8">8 PT / month</button></div>
+      </div>
+    </div>
+    <aside class="cout">
+      <p class="cl">Your month</p>
+      <p class="cnum"><b id="cMonthly">&pound;85</b><i>/ month</i></p>
+      <p class="cline" id="cToday">Rolling monthly &middot; cancel anytime</p>
+      <p class="csave" id="cSave"></p>
+      <button class="pill solid wide" data-book>Book a tour &mdash; lock it in</button>
+      <p class="cfine">Indicative rates for this preview &mdash; final pricing confirmed by CrossFit Tyneside.</p>
+    </aside>
+  </div>
+</section>
+
+<section id="timetable" class="block">
   <div class="w">
     <div class="bh">
       <div>
@@ -425,10 +503,41 @@ footer .swap:after{content:"";position:absolute;top:2px;left:2px;width:12px;heig
 
   var yr = document.getElementById("yr"); if (yr) yr.textContent = new Date().getFullYear();
 
-  var im = document.createElement("script"); im.type = "importmap";
-  im.textContent = JSON.stringify({imports:{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}});
-  document.head.appendChild(im);
-  var m = document.createElement("script"); m.type = "module"; m.textContent = `
+  /* ---- membership calculator ---- */
+  var calcm = document.getElementById("cMonthly");
+  if (calcm) {
+    var cst = { term: "flex", hours: "peak", pt: 0 };
+    var CP = { flex: 85, annual: 72, pt: 38 };
+    var money = function(v){ var r = Math.round(v * 100) / 100; return "£" + (r % 1 === 0 ? r : r.toFixed(2)); };
+    var renderCalc = function(){
+      var base = cst.term === "annual" ? CP.annual : CP.flex;
+      var mth = base * (cst.hours === "off" ? 0.85 : 1) + cst.pt * CP.pt;
+      calcm.textContent = money(mth);
+      var today = document.getElementById("cToday");
+      if (today) today.textContent = cst.term === "annual"
+        ? "Billed " + money(mth * 12) + " today · 12-month pass"
+        : "Rolling monthly · cancel anytime";
+      var save = document.getElementById("cSave");
+      var diff = CP.flex * 12 - mth * 12;
+      if (save) { save.textContent = diff > 1 ? "You save " + money(diff) + " a year" : ""; save.style.opacity = diff > 1 ? "1" : "0"; }
+    };
+    document.querySelectorAll(".seg").forEach(function(seg){
+      seg.addEventListener("click", function(e){
+        var b = e.target.closest ? e.target.closest("button") : null;
+        if (!b || !seg.contains(b)) return;
+        seg.querySelectorAll("button").forEach(function(x){ x.classList.toggle("on", x === b); });
+        var grp = seg.getAttribute("data-group"), v = b.getAttribute("data-v");
+        if (grp === "pt") { cst.pt = parseInt(v, 10) || 0; } else { cst[grp] = v; }
+        renderCalc();
+        calcm.classList.remove("tick"); void calcm.offsetWidth; calcm.classList.add("tick");
+      });
+    });
+    renderCalc();
+  }
+})();
+</script>
+<script type="module">
+
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
@@ -664,7 +773,7 @@ function tick() {
   px += (tx - px) * 0.045;
   py += (ty - py) * 0.045;
   spin *= dragging ? 0.94 : 0.965;
-  group.rotation.y = t * 0.05 + px * 0.4 + spin;
+  group.rotation.y = t * 0.05 + px * 0.4 + spin + (window.scrollY || 0) * 0.0013;
   group.rotation.x = py * 0.1 + Math.sin(t * 0.4) * 0.015;
   for (let ai = 0; ai < acts.length; ai++) acts[ai](t, dt);
   updateSpray(dt);
@@ -687,8 +796,7 @@ addEventListener('resize', () => {
   camera.updateProjectionMatrix();
   renderer.setSize(w, h);
 });
-`; document.body.appendChild(m);
-})();
+
 </script>
 </body>
 </html>
