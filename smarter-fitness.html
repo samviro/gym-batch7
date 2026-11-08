@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smarter Fitness — Independent Gym, Byker, Newcastle</title>
+<meta name="description" content="Independent gym on Shields Road, Byker. Strength floor, conditioning rig and coaching that gets results.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0A0A;--ink:#F2F0EB;--mut:#86817A;--line:rgba(255,255,255,.14);--red:#C0504D;--neon:#7CE86A;--vio:#9370DB;--panel:#0E0E0E}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.locked{overflow:hidden}
+.serif{font-family:"Playfair Display",Georgia,serif}
+::selection{background:var(--red);color:#fff}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.w{width:min(1240px,92vw);margin-inline:auto}
+
+/* intro */
+#intro{position:fixed;inset:0;z-index:200;background:#080808;display:grid;place-items:center;transition:opacity .9s ease,filter .9s ease;overflow:hidden}
+#intro:after{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 30% 60%,rgba(192,80,77,.16),transparent 60%),radial-gradient(50% 45% at 72% 40%,rgba(124,232,106,.1),transparent 60%);filter:blur(30px)}
+#intro.done{opacity:0;filter:blur(14px);pointer-events:none}
+.smoke i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;animation:drift 9s ease-in-out infinite alternate}
+.smoke i:nth-child(1){width:46vw;height:46vw;left:-10vw;bottom:-18vw;background:radial-gradient(circle,rgba(192,80,77,.5),transparent 65%)}
+.smoke i:nth-child(2){width:40vw;height:40vw;right:-8vw;top:-12vw;background:radial-gradient(circle,rgba(124,232,106,.32),transparent 65%);animation-delay:-3s}
+.smoke i:nth-child(3){width:34vw;height:34vw;right:18vw;bottom:-14vw;background:radial-gradient(circle,rgba(147,112,219,.35),transparent 65%);animation-delay:-6s}
+@keyframes drift{to{transform:translate3d(4vw,-3vw,0) scale(1.12)}}
+.iin{position:relative;z-index:2;text-align:center;padding:0 6vw}
+.iin .est{font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:var(--mut)}
+.iin h1{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(2.6rem,8vw,6rem);line-height:1;margin:18px 0 10px;background:linear-gradient(180deg,#fff 20%,#b9b4ac);-webkit-background-clip:text;background-clip:text;color:transparent}
+.iin p2{display:block;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:#9a958d}
+.iline{width:min(320px,60vw);height:1px;background:rgba(255,255,255,.16);margin:34px auto 16px;position:relative;overflow:hidden}
+.iline b{position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--red),transparent);transform:translateX(-100%);animation:load 2.2s ease forwards}
+@keyframes load{to{transform:translateX(0)}}
+.ienter{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:#c9c4bb;background:none;border:0;cursor:pointer;font-family:inherit}
+.ienter:hover{color:#fff}
+
+/* header */
+.top{position:fixed;top:0;left:0;right:0;z-index:90;padding:20px 0;background:linear-gradient(180deg,rgba(10,10,10,.9),rgba(10,10,10,0));backdrop-filter:blur(0);transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
+.top.solid{background:rgba(10,10,10,.86);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.top .w{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.mono{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.3em;text-transform:uppercase}
+.mono i{width:10px;height:10px;border:1px solid var(--red);transform:rotate(45deg);display:inline-block}
+nav.mid{display:flex;gap:26px;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--mut)}
+nav.mid a{position:relative;padding-bottom:6px;transition:color .3s}
+nav.mid a:hover,nav.mid a.on{color:var(--ink)}
+nav.mid a.on:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--red)}
+.pill{border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;transition:border-color .3s,background .3s;white-space:nowrap}
+.pill:hover{border-color:var(--red);background:rgba(192,80,77,.1)}
+.pill.solid{background:var(--ink);color:#0A0A0A;border-color:var(--ink);font-weight:600}
+.pill.solid:hover{background:#fff}
+
+/* hero */
+.hero{padding:118px 0 0;position:relative}
+.strip{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--mut)}
+.strip b{color:var(--ink);font-weight:500;position:relative;padding-bottom:4px;cursor:default}
+.strip b.on:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--red)}
+.strip .sp{flex:1}
+.strip .dot{opacity:.4}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:4vw;align-items:center;padding:56px 0 40px}
+.k{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);display:flex;gap:12px;align-items:center}
+.k:before{content:"";width:26px;height:1px;background:var(--red)}
+h1{font-size:clamp(2.6rem,5.4vw,4.6rem);line-height:.98;letter-spacing:-.015em;margin:22px 0 20px;text-transform:uppercase;font-weight:700}
+h1 em{display:block;font-family:"Playfair Display",serif;font-style:italic;font-weight:500;text-transform:none;color:var(--red);letter-spacing:-.01em}
+.sub{max-width:46ch;color:#b8b3aa;font-size:15px;line-height:1.75}
+.sub em{font-family:"Playfair Display",serif;color:var(--red);font-style:italic}
+.cta{display:flex;gap:12px;margin:30px 0 34px;flex-wrap:wrap}
+.btn{border:0;cursor:pointer;font-family:inherit;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;padding:15px 26px;border-radius:999px;transition:transform .3s,box-shadow .3s,background .3s,color .3s}
+.btn.solid{background:var(--red);color:#fff}
+.btn.solid:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(192,80,77,.32)}
+.btn.ghostb{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghostb:hover{border-color:var(--ink)}
+.numrow{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;border-top:1px solid var(--line);padding-top:24px}
+.big b{display:block;font-size:clamp(2rem,3.4vw,3rem);font-weight:300;letter-spacing:-.02em;line-height:1}
+.big span{display:block;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);margin-top:8px}
+.dots{display:flex;gap:10px}
+.dots a{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;transition:border-color .3s,background .3s,transform .3s}
+.dots a:hover{border-color:var(--red);background:rgba(192,80,77,.12);transform:translateY(-3px)}
+.dots svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.3}
+.heroart{position:relative;border:1px solid var(--line);border-radius:2px;overflow:hidden;background:#0c0c0c}
+.heroart img{width:100%;height:clamp(340px,46vw,520px);object-fit:cover;filter:contrast(1.08) saturate(.92);opacity:.95}
+.wash{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen}
+.wash.g{background:radial-gradient(46% 60% at 20% 62%,rgba(124,232,106,.28),transparent 62%)}
+.wash.v{background:radial-gradient(44% 58% at 82% 40%,rgba(147,112,219,.3),transparent 64%)}
+.heroart figcaption{position:absolute;left:16px;bottom:14px;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#cfcac1}
+.vl{position:absolute;top:16px;font-size:8.5px;letter-spacing:.34em;text-transform:uppercase;color:#a9a49b;writing-mode:vertical-rl}
+.vl.l{left:12px;transform:rotate(180deg)}
+.vl.r{right:12px}
+
+/* band */
+.band{position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:26px;overflow:hidden}
+.band img{width:100%;height:clamp(200px,26vw,320px);object-fit:cover;opacity:.82}
+.band .cap{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-between;padding:18px 22px;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#d3cec5}
+.band .gl{position:absolute;inset:0;background:radial-gradient(50% 80% at 78% 30%,rgba(147,112,219,.22),transparent 60%),radial-gradient(40% 70% at 18% 70%,rgba(124,232,106,.18),transparent 65%)}
+
+/* blocks */
+.block{padding:74px 0;border-bottom:1px solid var(--line)}
+.bh{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:34px}
+.bh .k{margin-bottom:12px}
+.bh h2{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.05;letter-spacing:-.01em;text-transform:uppercase;font-weight:700}
+.bh h2 em{font-family:"Playfair Display",serif;font-style:italic;text-transform:none;color:var(--red);font-weight:500}
+.bh p.lead{max-width:40ch;color:var(--mut);font-size:13.5px;line-height:1.7}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line)}
+.card{padding:26px 22px;border-right:1px solid var(--line);min-height:210px;display:flex;flex-direction:column;justify-content:space-between;transition:background .35s}
+.card:last-child{border-right:0}
+.card:hover{background:#0f0f0f}
+.card.hi{background:#141414}
+.card i{font-style:normal;font-size:9px;letter-spacing:.3em;color:var(--mut)}
+.card h3{font-size:14px;letter-spacing:.02em;margin:14px 0 10px;font-weight:500}
+.card p{font-size:12px;line-height:1.7;color:#918c84}
+.card .go{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--red);margin-top:16px}
+
+/* 3D panel */
+.panel3{border:1px solid var(--line);position:relative;background:radial-gradient(60% 80% at 70% 30%,rgba(20,20,20,.9),#0b0b0b)}
+.phead{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--mut)}
+#stage{width:100%;height:clamp(320px,42vw,470px)}
+#stage canvas{display:block}
+.hint{color:#6d6963}
+
+/* table */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);font-weight:400}
+td{padding:15px 12px;border-bottom:1px solid rgba(255,255,255,.07);color:#cfcac1}
+td:first-child{color:var(--ink);letter-spacing:.06em;font-size:12px}
+tr:hover td{background:#0e0e0e}
+.tblwrap{overflow-x:auto}
+.latest{margin-top:26px;border:1px solid var(--line);padding:24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:#0d0d0d}
+.latest .t{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--red)}
+.latest h3{font-size:clamp(1.2rem,2vw,1.6rem);margin-top:8px;font-weight:500}
+.latest p{color:var(--mut);font-size:12.5px;margin-top:6px}
+
+/* visit */
+.visit .cols{display:grid;grid-template-columns:1.1fr .9fr;gap:4vw}
+.vlist{display:grid;gap:0;border-top:1px solid var(--line);margin-top:26px}
+.vrow{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:13px}
+.vrow b{font-weight:400;color:var(--mut);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase}
+.vcard{border:1px solid var(--line);padding:30px;background:linear-gradient(160deg,#101010,#0b0b0b);position:relative;overflow:hidden}
+.vcard:before{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 80% 10%,rgba(124,232,106,.1),transparent 60%);pointer-events:none}
+.vcard h3{font-size:1.5rem;line-height:1.15;margin:12px 0 12px;font-weight:500}
+.vcard p{color:var(--mut);font-size:13px;line-height:1.7;margin-bottom:22px}
+footer{padding:40px 0 46px;text-align:center;color:#6f6a63;font-size:10px;letter-spacing:.22em;text-transform:uppercase}
+footer .fname{font-family:"Playfair Display",serif;font-style:italic;text-transform:none;font-size:1.15rem;color:#b6b1a8;letter-spacing:0;margin-bottom:10px}
+footer a{color:#9a958d}
+footer .swap{width:38px;height:18px;border:1px solid var(--line);border-radius:999px;margin:0 auto 16px;position:relative}
+footer .swap:after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--red)}
+
+/* modal */
+#modal{position:fixed;inset:0;z-index:120;background:rgba(6,6,6,.8);backdrop-filter:blur(10px);display:grid;place-items:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .4s}
+#modal.open{opacity:1;pointer-events:auto}
+.mcard{width:min(520px,94vw);background:#0d0d0d;border:1px solid var(--line);padding:34px;position:relative;transform:translateY(16px);transition:transform .4s}
+#modal.open .mcard{transform:none}
+#mclose{position:absolute;top:14px;right:16px;background:none;border:1px solid var(--line);color:var(--ink);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:15px;line-height:1}
+.mcard h3{font-size:1.55rem;line-height:1.15;margin:10px 0 18px;font-weight:500}
+.mcard h3 em{font-family:"Playfair Display",serif;color:var(--red);font-style:italic}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;background:#0a0a0a;border:1px solid var(--line);color:var(--ink);padding:12px 14px;font:inherit;font-size:13px;border-radius:2px;outline:none;transition:border-color .3s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--red)}
+.mcard .btn{width:100%;margin-top:8px}
+#okPanel{display:none;text-align:center;padding:14px 0}
+#okPanel.show{display:block}
+#okPanel h4{font-family:"Playfair Display",serif;font-size:1.3rem;margin-bottom:10px}
+#okPanel p{color:var(--mut);font-size:13px;line-height:1.7;margin-bottom:18px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.smoke i{animation:none}}
+@media(max-width:980px){
+ .hero-grid{grid-template-columns:1fr;gap:34px;padding:40px 0 30px}
+ .hero{padding-top:96px}
+ nav.mid{display:none}
+ .grid4{grid-template-columns:1fr 1fr}
+ .card:nth-child(2n){border-right:0}
+ .card{border-bottom:1px solid var(--line);min-height:auto}
+ .card:nth-last-child(-n+2){border-bottom:0}
+ .visit .cols{grid-template-columns:1fr;gap:28px}
+ .strip{font-size:8.5px;gap:12px}
+ .heroart img{height:clamp(280px,62vw,420px)}
+ #stage{height:340px}
+ .big b{font-size:2rem}
+ .numrow{flex-wrap:wrap;gap:16px}
+}
+@media(max-width:560px){
+ .grid4{grid-template-columns:1fr}
+ .card{border-right:0}
+ .cta .btn{flex:1;text-align:center}
+}
+</style>
+</head>
+<body class="locked">
+
+<div id="intro">
+  <div class="smoke"><i></i><i></i><i></i></div>
+  <div class="iin">
+    <p class="est">Independent gym &middot; Byker, Newcastle</p>
+    <h1 class="serif">Smarter Fitness</h1>
+    <span class="p2">Newcastle &middot; Independent</span>
+    <div class="iline"><b></b></div>
+    <button class="ienter" id="enterBtn">Enter the floor</button>
+  </div>
+</div>
+
+<header class="top" id="nav">
+  <div class="w">
+    <a class="mono" href="#top"><i></i>Smarter Fitness</a>
+    <nav class="mid">
+      <a href="#floor" class="on">The Floor</a>
+      <a href="#motion">In Motion</a>
+      <a href="#timetable">Timetable</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="pill solid" href="#visit">Book a tour</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="w">
+    <div class="strip">
+      <b class="on">Newcastle</b><span class="dot">&middot;</span>
+      <b>Member reviews</b><span class="dot">&middot;</span><b>Byker</b><span class="dot">&middot;</span><b>Early opening</b>
+      <span class="sp"></span>
+      <span class="pill" style="padding:6px 14px">Independent</span>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="k rv">Independent gym &middot; Byker, Newcastle</p>
+        <h1 class="rv">Smarter.<em class="serif">by design.</em></h1>
+        <p class="sub rv">An independent gym on Shields Road with a 5.0 rating and a floor that rewards consistency. Strength, conditioning and coaching <em>under one roof</em>.</p>
+        <div class="cta rv">
+          <button class="btn solid" data-book>Book a private tour</button>
+          <button class="btn ghostb" data-pass>Day pass</button>
+        </div>
+        <div class="numrow rv">
+          <div class="big"><b>5.0&#9733;</b><span>Google rating</span></div>
+          <div class="dots">
+            <a href="#floor" aria-label="The floor"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 4-4 2 2-4z"/></svg></a>
+            <a href="#visit" aria-label="Visit"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11a7 7 0 10-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></a>
+            <a href="#motion" aria-label="In motion"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <figure class="heroart rv">
+        <img src="https://media.base44.com/images/public/6adb3835c9e2713e1bb0f21f/fd840c4bb_generated_image.png" alt="Smarter Fitness training floor concept">
+        <div class="wash g"></div><div class="wash v"></div>
+        <span class="vl l">NEWCASTLE</span><span class="vl r">THE FLOOR</span>
+        <figcaption>Newcastle &middot; INDEPENDENT GYM &MIDDOT; BYKER, NEWCASTLE</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="band">
+    <img src="https://media.base44.com/images/public/6adb3835c9e2713e1bb0f21f/4dd2d91af_generated_image.png" alt="">
+    <div class="gl"></div>
+    <div class="cap"><span>Bars &middot; Plates &middot; Chalk</span><span>Independent</span></div>
+  </div>
+</section>
+
+<section class="block" id="floor">
+  <div class="w">
+    <div class="bh">
+      <div>
+        <p class="k">01 &mdash; The Floor</p>
+        <h2>Built for <em class="serif">heavy work.</em></h2>
+      </div>
+      <p class="lead">Kit chosen by people who coach, not by a spreadsheet. Everything on this floor has a job.</p>
+    </div>
+    <div class="grid4 rv"><article class="card"><div><i>01</i><h3>Strength floor</h3><p>Racks, benches and free weights with room to move.</p></div><span class="go">Explore</span></article><article class="card"><div><i>02</i><h3>Conditioning rig</h3><p>Sleds, bikes, rowers and space for metcons.</p></div><span class="go">Explore</span></article><article class="card hi"><div><i>03</i><h3>Coaching</h3><p>Programming and 1:1 sessions with the floor team.</p></div><span class="go">Explore</span></article><article class="card"><div><i>04</i><h3>Early doors</h3><p>Open from 6am for the before-work shift.</p></div><span class="go">Explore</span></article></div>
+  </div>
+</section>
+
+<section class="block" id="motion">
+  <div class="w">
+    <div class="bh">
+      <div>
+        <p class="k">02 &mdash; In Motion</p>
+        <h2>Heavy kit, <em class="serif">in action.</em></h2>
+      </div>
+      <p class="lead">This is live 3D, not a photo. Drag it, tilt it, watch the load move.</p>
+    </div>
+    <div class="panel3 rv">
+      <div class="phead"><span>Three-dimensional floor</span><span class="hint">Drag to move</span></div>
+      <div id="stage"></div>
+      <div id="stagefb"></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="timetable">
+  <div class="w">
+    <div class="bh">
+      <div>
+        <p class="k">03 &mdash; Timetable</p>
+        <h2>The week, <em class="serif">booked.</em></h2>
+      </div>
+      <p class="lead">Coach-led sessions on the floor. Members train open gym any time we are open.</p>
+    </div>
+    <div class="tblwrap rv">
+      <table>
+        <thead><tr><th>Day</th><th>Session</th><th>Time</th><th>Level</th></tr></thead>
+        <tbody><tr><td>Monday</td><td>Strength Basics</td><td>07:00</td><td>Beginner</td></tr><tr><td>Tuesday</td><td>Conditioning Club</td><td>18:00</td><td>All levels</td></tr><tr><td>Wednesday</td><td>Squat Clinic</td><td>18:30</td><td>Intermediate</td></tr><tr><td>Thursday</td><td>Metcon Night</td><td>18:00</td><td>All levels</td></tr><tr><td>Saturday</td><td>Open Floor</td><td>09:00</td><td>Members</td></tr></tbody>
+      </table>
+    </div>
+    <div class="latest rv">
+      <div>
+        <p class="t">Latest intake</p>
+        <h3>Start this week.</h3>
+        <p>Private tour, then your first session on us.</p>
+      </div>
+      <button class="btn solid" data-book>Reserve a spot</button>
+    </div>
+  </div>
+</section>
+
+<section class="block visit" id="visit">
+  <div class="w">
+    <div class="bh">
+      <div>
+        <p class="k">04 &mdash; Visit</p>
+        <h2>Find us on <em class="serif">the floor.</em></h2>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="rv">
+        <div class="vlist">
+          <div class="vrow"><b>Address</b><span>284-290 Shields Road, Byker, Newcastle upon Tyne NE6 1DX</span></div>
+          <div class="vrow"><b>Hours</b><span>Doors from 6am</span></div>
+          <div class="vrow"><b>Phone</b><span>smarter-fitness@outlook.com</span></div>
+          <div class="vrow"><b>Instagram</b><span><a href="https://www.instagram.com/smarter_fitness/" target="_blank" rel="noopener">@smarter_fitness</a></span></div>
+          <div class="vrow"><b>Directions</b><span><a href="https://maps.google.com/?q=Smarter+Fitness+284+Shields+Road+Byker+Newcastle+NE6+1DX" target="_blank" rel="noopener">Open in maps</a></span></div>
+        </div>
+      </div>
+      <div class="vcard rv">
+        <p class="k">Private tour &middot; Day pass</p>
+        <h3>See the floor before you commit.</h3>
+        <p>Walk in, meet a coach, try the kit. Tell us when suits and we will hold the slot.</p>
+        <button class="btn solid" data-book>Book a private tour</button>
+        <button class="btn ghostb" data-pass style="margin-top:10px;width:100%">Request a day pass</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="swap" aria-hidden="true"></div>
+  <div class="fname serif">Smarter Fitness</div>
+  <p>284-290 Shields Road, Byker, Newcastle upon Tyne NE6 1DX &middot; @smarter_fitness &middot; smarter-fitness@outlook.com</p>
+  <p style="margin-top:10px">&copy; <span id="yr">2026</span> Smarter Fitness. All rights reserved.</p>
+</footer>
+
+<div id="modal" aria-hidden="true">
+  <div class="mcard" role="dialog" aria-modal="true">
+    <button id="mclose" aria-label="Close">&times;</button>
+    <p class="k">Smarter Fitness &middot; Newcastle</p>
+    <h3 id="mtitle">Book a <em class="serif">private tour</em></h3>
+    <form id="bookForm">
+      <div class="field"><label for="f-name">Your name</label><input id="f-name" required placeholder="Sam Carter"></div>
+      <div class="field"><label for="f-phone">Phone</label><input id="f-phone" required placeholder="07___ ______"></div>
+      <div class="field"><label for="f-type">I'm interested in</label>
+        <select id="f-type"><option>Private tour</option><option>Day pass</option><option>Membership info</option></select>
+      </div>
+      <div class="field"><label for="f-when">Preferred day &amp; time</label><input id="f-when" placeholder="e.g. Tuesday evening"></div>
+      <button class="btn solid" type="submit">Send request</button>
+    </form>
+    <div id="okPanel">
+      <h4 class="serif">Request noted.</h4>
+      <p>Your details are ready to send to Smarter Fitness. Tap below to finish up.</p>
+      <a class="btn solid" href="mailto:smarter-fitness@outlook.com" target="_blank" rel="noopener" style="display:block">Contact Smarter</a>
+      <a class="btn ghostb" href="tel:https://www.instagram.com/smarter_fitness/" style="display:block;margin-top:10px">Call the gym</a>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var intro = document.getElementById("intro"), body = document.body;
+  function lift(){ if(!intro || intro.classList.contains("done")) return;
+    intro.classList.add("done"); body.classList.remove("locked");
+    setTimeout(function(){ intro.style.display = "none"; }, 950); }
+  var timer = setTimeout(lift, reduce ? 500 : 2500);
+  var eb = document.getElementById("enterBtn");
+  if (eb) eb.addEventListener("click", function(){ clearTimeout(timer); lift(); });
+
+  var nav = document.getElementById("nav");
+  function onScroll(){
+    nav.classList.toggle("solid", window.scrollY > 40);
+    var secs = ["floor","motion","timetable","visit"], links = document.querySelectorAll("nav.mid a");
+    var cur = "";
+    secs.forEach(function(id){ var el=document.getElementById(id); if(el && el.getBoundingClientRect().top < 180) cur = id; });
+    links.forEach(function(a){ a.classList.toggle("on", a.getAttribute("href") === "#"+cur); });
+  }
+  window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
+
+  var rvs = document.querySelectorAll(".rv");
+  if ("IntersectionObserver" in window && !reduce) {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, {threshold:.1});
+    rvs.forEach(function(el){ io.observe(el); });
+  } else { rvs.forEach(function(el){ el.classList.add("in"); }); }
+
+  var modal = document.getElementById("modal"), form = document.getElementById("bookForm"),
+      ok = document.getElementById("okPanel"), mtitle = document.getElementById("mtitle");
+  function open(type){
+    if (mtitle) mtitle.innerHTML = type === "day" ? "Request a <em class=\"serif\">day pass</em>" : "Book a <em class=\"serif\">private tour</em>";
+    var sel = document.getElementById("f-type");
+    if (sel) sel.value = type === "day" ? "Day pass" : "Private tour";
+    modal.classList.add("open"); body.classList.add("locked");
+  }
+  function close(){ modal.classList.remove("open"); body.classList.remove("locked"); }
+  var bs = document.querySelectorAll("[data-book]");
+  for (var i=0;i<bs.length;i++) bs[i].addEventListener("click", function(e){ e.preventDefault(); open("tour"); });
+  var ps = document.querySelectorAll("[data-pass]");
+  for (var j=0;j<ps.length;j++) ps[j].addEventListener("click", function(e){ e.preventDefault(); open("day"); });
+  document.getElementById("mclose").addEventListener("click", close);
+  modal.addEventListener("click", function(e){ if (e.target === modal) close(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") close(); });
+  form.addEventListener("submit", function(e){ e.preventDefault(); form.style.display = "none"; ok.classList.add("show"); });
+
+  var yr = document.getElementById("yr"); if (yr) yr.textContent = new Date().getFullYear();
+
+  var im = document.createElement("script"); im.type = "importmap";
+  im.textContent = JSON.stringify({imports:{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}});
+  document.head.appendChild(im);
+  var m = document.createElement("script"); m.type = "module"; m.textContent = `
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const stage = document.getElementById('stage');
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+} catch (e) {
+  document.getElementById('stagefb').style.display = 'grid';
+  stage.style.display = 'none';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(stage.clientWidth, stage.clientHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+stage.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(38, stage.clientWidth / stage.clientHeight, 0.1, 100);
+camera.position.set(0, 0.15, 6.4);
+
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+
+const ACCENT = new THREE.Color('#C0504D');
+const ACCENT2 = new THREE.Color('#7CE86A');
+const DEEP = new THREE.Color('#0A0A0A');
+
+/* lighting: cinematic 3-point */
+const key = new THREE.DirectionalLight(0xffffff, 2.6);
+key.position.set(4, 6, 5);
+scene.add(key);
+const rim = new THREE.PointLight(ACCENT, 90, 24, 2);
+rim.position.set(-4.2, 1.6, -3.2);
+scene.add(rim);
+const rim2 = new THREE.PointLight(ACCENT2, 55, 22, 2);
+rim2.position.set(4.4, -2.4, -2.4);
+scene.add(rim2);
+const fill = new THREE.HemisphereLight(DEEP.getHex(), 0x050505, 0.55);
+scene.add(fill);
+
+/* materials */
+const chrome = new THREE.MeshPhysicalMaterial({ color: 0xf4f4f5, metalness: 1, roughness: 0.12, envMapIntensity: 1.5, clearcoat: 1, clearcoatRoughness: 0.08 });
+const steel  = new THREE.MeshPhysicalMaterial({ color: 0x3a3a3e, metalness: 0.95, roughness: 0.32, envMapIntensity: 1.1 });
+const accentM = new THREE.MeshPhysicalMaterial({ color: ACCENT, metalness: 0.85, roughness: 0.25, emissive: ACCENT, emissiveIntensity: 0.35, envMapIntensity: 1.2 });
+const rubber = new THREE.MeshStandardMaterial({ color: 0x141416, metalness: 0.2, roughness: 0.85 });
+
+const group = new THREE.Group();
+scene.add(group);
+
+/* ---- action rig: sweat spray, impact shake, heavy-steel grain, contact shadow ---- */
+const acts = [];
+let shake = 0;
+function noiseTex() {
+  const c = document.createElement('canvas'); c.width = c.height = 128;
+  const g = c.getContext('2d'); const d = g.createImageData(128, 128);
+  for (let i = 0; i < d.data.length; i += 4) { const v = 110 + (Math.random() * 90 | 0); d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; }
+  g.putImageData(d, 0, 0);
+  const tx = new THREE.CanvasTexture(c); tx.wrapS = tx.wrapT = THREE.RepeatWrapping; tx.repeat.set(3, 3);
+  return tx;
+}
+const grain = noiseTex();
+chrome.bumpMap = grain; chrome.bumpScale = 0.0016;
+steel.bumpMap = grain; steel.bumpScale = 0.0032;
+
+const SW = 300;
+const swPos = new Float32Array(SW * 3), swVel = new Float32Array(SW * 3), swCol = new Float32Array(SW * 3);
+const swLife = new Float32Array(SW), swMax = new Float32Array(SW), swBase = new Float32Array(SW * 3);
+for (let i = 0; i < SW; i++) { swPos[i * 3 + 1] = -99; }
+const swGeo = new THREE.BufferGeometry();
+swGeo.setAttribute('position', new THREE.BufferAttribute(swPos, 3));
+swGeo.setAttribute('color', new THREE.BufferAttribute(swCol, 3));
+const swMat = new THREE.PointsMaterial({ size: 0.05, vertexColors: true, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false });
+const swPts = new THREE.Points(swGeo, swMat);
+scene.add(swPts);
+let swI = 0;
+const whiteC = new THREE.Color(0xffffff);
+function spray(ox, oy, oz, count, power, biasX, biasY) {
+  for (let k = 0; k < count; k++) {
+    const i = swI; swI = (swI + 1) % SW;
+    swPos[i * 3] = ox + (Math.random() - 0.5) * 0.1;
+    swPos[i * 3 + 1] = oy + (Math.random() - 0.5) * 0.1;
+    swPos[i * 3 + 2] = oz + (Math.random() - 0.5) * 0.1;
+    const a = Math.random() * Math.PI * 2, r = Math.random();
+    swVel[i * 3] = Math.cos(a) * r * power + (biasX || 0) * power * 0.6;
+    swVel[i * 3 + 1] = (biasY !== undefined ? biasY : 1) * (0.5 + Math.random() * 0.9) * power;
+    swVel[i * 3 + 2] = Math.sin(a) * r * power * 0.5;
+    swMax[i] = swLife[i] = 0.5 + Math.random() * 0.55;
+    const c = Math.random() < 0.3 ? ACCENT : whiteC;
+    swBase[i * 3] = c.r; swBase[i * 3 + 1] = c.g; swBase[i * 3 + 2] = c.b;
+  }
+}
+function updateSpray(dt) {
+  for (let i = 0; i < SW; i++) {
+    if (swLife[i] <= 0) { swPos[i * 3 + 1] = -99; swCol[i * 3] = swCol[i * 3 + 1] = swCol[i * 3 + 2] = 0; continue; }
+    swLife[i] -= dt;
+    swPos[i * 3] += swVel[i * 3] * dt;
+    swPos[i * 3 + 1] += swVel[i * 3 + 1] * dt;
+    swPos[i * 3 + 2] += swVel[i * 3 + 2] * dt;
+    swVel[i * 3 + 1] -= 5.2 * dt;
+    const f = Math.max(0, swLife[i] / swMax[i]);
+    swCol[i * 3] = swBase[i * 3] * f;
+    swCol[i * 3 + 1] = swBase[i * 3 + 1] * f;
+    swCol[i * 3 + 2] = swBase[i * 3 + 2] * f;
+  }
+  swGeo.attributes.position.needsUpdate = true;
+  swGeo.attributes.color.needsUpdate = true;
+}
+/* lighting polish: equipment must read clearly */
+renderer.toneMappingExposure = (renderer.toneMappingExposure || 1) * 1.2;
+steel.color.set(0x5a5e64); steel.roughness = 0.3; steel.envMapIntensity = 1.4;
+const key2 = new THREE.DirectionalLight(0xffffff, 1.2);
+key2.position.set(-3.5, 2.4, 6.5); scene.add(key2);
+const kick = new THREE.PointLight(ACCENT, 70, 18, 2);
+kick.position.set(2.8, -1.1, 3.8); scene.add(kick);
+
+(function () {
+  const c = document.createElement('canvas'); c.width = c.height = 256;
+  const g = c.getContext('2d');
+  const rg = g.createRadialGradient(128, 128, 8, 128, 128, 124);
+  rg.addColorStop(0, 'rgba(0,0,0,0.85)'); rg.addColorStop(0.55, 'rgba(0,0,0,0.32)'); rg.addColorStop(1, 'rgba(0,0,0,0)');
+  g.fillStyle = rg; g.fillRect(0, 0, 256, 256);
+  const t = new THREE.CanvasTexture(c);
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(3.8, 3.8), new THREE.MeshBasicMaterial({ map: t, transparent: true, opacity: 0.8, depthWrite: false }));
+  m.rotation.x = -Math.PI / 2; m.position.y = -1.36; scene.add(m);
+})();
+
+
+
+/* HEAVY LEG PRESS - sled on steel rails, loaded plates */
+const lp = new THREE.Group();
+const base = new THREE.Mesh(new THREE.BoxGeometry(1.14, 0.14, 1.95), steel);
+base.position.y = -1.22; lp.add(base);
+[-0.52, 0.52].forEach((x) => {
+  const side = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.52, 1.7), steel);
+  side.position.set(x, -0.95, 0); lp.add(side);
+  const rail = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 1.78, 18), accentM);
+  rail.rotation.x = Math.PI / 2; rail.position.set(x, -0.6, 0); lp.add(rail);
+});
+const stop = new THREE.Mesh(new THREE.BoxGeometry(1.18, 0.52, 0.12), steel);
+stop.position.set(0, -0.52, -0.88); stop.rotation.x = -0.18; lp.add(stop);
+const seat = new THREE.Mesh(new THREE.BoxGeometry(0.64, 0.13, 0.56), rubber);
+seat.position.set(0, -0.74, -0.52); seat.rotation.x = 0.26; lp.add(seat);
+const backr = new THREE.Mesh(new THREE.BoxGeometry(0.64, 0.68, 0.1), rubber);
+backr.position.set(0, -0.36, -0.76); backr.rotation.x = -0.5; lp.add(backr);
+
+const sled = new THREE.Group();
+const plate = new THREE.Mesh(new THREE.BoxGeometry(1.06, 0.86, 0.1), chrome);
+sled.add(plate);
+const foot = new THREE.Mesh(new THREE.BoxGeometry(0.94, 0.68, 0.05), steel);
+foot.position.set(0, -0.02, 0.1); foot.rotation.x = -0.2; sled.add(foot);
+[-0.64, 0.64].forEach((x) => {
+  const sleeve = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.4, 16), chrome);
+  sleeve.rotation.z = Math.PI / 2; sleeve.position.set(x, 0.06, 0); sled.add(sleeve);
+  for (let k = 0; k < 3; k++) {
+    const disc = new THREE.Mesh(new THREE.CylinderGeometry(0.34 - k * 0.02, 0.34 - k * 0.02, 0.055, 36), k === 1 ? accentM : rubber);
+    disc.rotation.z = Math.PI / 2;
+    disc.position.set(x + (x > 0 ? 1 : -1) * (0.1 + k * 0.062), 0.06, 0);
+    sled.add(disc);
+  }
+});
+sled.rotation.x = -0.55;
+sled.position.set(0, -0.34, 0.42);
+lp.add(sled);
+lp.rotation.x = -0.16;
+group.add(lp);
+
+let prevP = 0;
+acts.push((t, dt) => {
+  const cyc = 3.1;
+  const ph = (t % cyc) / cyc;
+  const push = ph < 0.45 ? ph / 0.45 : 1 - (ph - 0.45) / 0.55;
+  const e = push * push * (3 - 2 * push);
+  sled.position.z = 0.42 - e * 0.62;
+  sled.position.y = -0.34 + e * 0.16;
+  lp.position.x = Math.sin(t * 13) * 0.003 * (e > 0.8 ? 1 : 0);
+  if (ph < prevP) {
+    shake = Math.max(shake, 0.045);
+    spray(0.55, -0.05, 0.72, 18, 1.6, 0.55, 0.6);
+    spray(-0.55, -0.05, 0.72, 18, 1.6, -0.55, 0.6);
+  }
+  prevP = ph;
+});
+group.scale.setScalar(0.95);
+
+
+/* particle atmosphere */
+const pGeo = new THREE.BufferGeometry();
+const N = 900;
+const pos = new Float32Array(N * 3);
+for (let i = 0; i < N; i++) {
+  pos[i*3]   = (Math.random() - 0.5) * 18;
+  pos[i*3+1] = (Math.random() - 0.5) * 12;
+  pos[i*3+2] = (Math.random() - 0.5) * 9 - 1;
+}
+pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+const pMat = new THREE.PointsMaterial({ color: ACCENT, size: 0.028, transparent: true, opacity: 0.5, depthWrite: false, blending: THREE.AdditiveBlending });
+const pts = new THREE.Points(pGeo, pMat);
+scene.add(pts);
+const pMat2 = new THREE.PointsMaterial({ color: 0xffffff, size: 0.016, transparent: true, opacity: 0.28, depthWrite: false, blending: THREE.AdditiveBlending });
+const pts2 = new THREE.Points(pGeo.clone(), pMat2);
+scene.add(pts2);
+
+/* pointer + drag */
+let px = 0, py = 0, tx = 0, ty = 0, vy = 0;
+let dragging = false, lastX = 0, spin = 0;
+const hero = document.getElementById('top');
+hero.addEventListener('pointermove', (e) => {
+  const r = hero.getBoundingClientRect();
+  tx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+  ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
+  if (dragging) { spin += (e.clientX - lastX) * 0.006; lastX = e.clientX; }
+});
+hero.addEventListener('pointerdown', (e) => { dragging = true; lastX = e.clientX; });
+addEventListener('pointerup', () => { dragging = false; });
+hero.addEventListener('touchmove', (e) => {
+  const r = hero.getBoundingClientRect();
+  tx = ((e.touches[0].clientX - r.left) / r.width - 0.5) * 2;
+  ty = ((e.touches[0].clientY - r.top) / r.height - 0.5) * 2;
+}, { passive: true });
+
+let visible = true;
+new IntersectionObserver((es) => { visible = es[0].isIntersecting; }).observe(hero);
+document.addEventListener('visibilitychange', () => { visible = !document.hidden; });
+
+const clock = new THREE.Clock();
+function tick() {
+  requestAnimationFrame(tick);
+  if (!visible) return;
+  const t = clock.getElapsedTime();
+  const dt = Math.min(0.05, t - (window.__lt !== undefined ? window.__lt : t)); window.__lt = t;
+  px += (tx - px) * 0.045;
+  py += (ty - py) * 0.045;
+  spin *= dragging ? 0.94 : 0.965;
+  group.rotation.y = t * 0.05 + px * 0.4 + spin;
+  group.rotation.x = py * 0.1 + Math.sin(t * 0.4) * 0.015;
+  for (let ai = 0; ai < acts.length; ai++) acts[ai](t, dt);
+  updateSpray(dt);
+  const wantX = (stage.clientWidth || 1200) > 900 ? 1.12 : 0;
+  group.position.x += (wantX - group.position.x) * 0.06;
+  shake *= 0.9;
+  camera.position.x = (Math.random() - 0.5) * shake;
+  camera.position.y = 0.12 + (Math.random() - 0.5) * shake * 0.6;
+  pts.rotation.y = t * 0.02;
+  pts2.rotation.y = -t * 0.016;
+  pts.position.y = Math.sin(t * 0.18) * 0.4;
+  pts2.position.y = Math.cos(t * 0.14) * 0.5;
+  renderer.render(scene, camera);
+}
+tick();
+
+addEventListener('resize', () => {
+  const w = stage.clientWidth, h = stage.clientHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+});
+`; document.body.appendChild(m);
+})();
+</script>
+</body>
+</html>
